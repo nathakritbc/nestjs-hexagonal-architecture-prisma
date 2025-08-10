@@ -1,9 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
-import { CreateProductCommand } from 'src/products/applications/ports/product.repository';
-
-export class CreateProductDto implements CreateProductCommand {
+export class CreateProductDto {
   @ApiProperty({
     type: String,
     example: 'John Doe',
