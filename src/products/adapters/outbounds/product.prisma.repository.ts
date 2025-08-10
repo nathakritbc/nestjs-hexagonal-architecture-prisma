@@ -2,10 +2,12 @@ import { TransactionHost } from '@nestjs-cls/transactional';
 import { TransactionalAdapterPrisma } from '@nestjs-cls/transactional-adapter-prisma';
 import { Injectable } from '@nestjs/common';
 import { Product } from '@prisma/client';
+import { Builder } from 'builder-pattern';
 import {
   IProduct,
   ProductCreatedAt,
   ProductDescription,
+  ProductDomain,
   ProductId,
   ProductImage,
   ProductName,
@@ -70,15 +72,15 @@ export class ProductPrismaRepository implements ProductRepository {
   }
 
   public static toDomain(productEntity: Product): IProduct {
-    return {
-      uuid: productEntity.uuid as ProductId,
-      name: productEntity.name as ProductName,
-      price: productEntity.price as ProductPrice,
-      description: productEntity.description as ProductDescription,
-      image: productEntity.image as ProductImage,
-      status: productEntity.status as Status,
-      createdAt: productEntity.createdAt as ProductCreatedAt,
-      updatedAt: productEntity.updatedAt as ProductUpdatedAt,
-    };
+    return Builder(ProductDomain)
+      .uuid(productEntity.uuid as ProductId)
+      .name(productEntity.name as ProductName)
+      .price(productEntity.price as ProductPrice)
+      .description(productEntity.description as ProductDescription)
+      .image(productEntity.image as ProductImage)
+      .status(productEntity.status as Status)
+      .createdAt(productEntity.createdAt as ProductCreatedAt)
+      .updatedAt(productEntity.updatedAt as ProductUpdatedAt)
+      .build();
   }
 }
