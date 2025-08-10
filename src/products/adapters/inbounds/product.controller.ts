@@ -1,5 +1,5 @@
 import { Transactional } from '@nestjs-cls/transactional';
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { Builder } from 'builder-pattern';
 import type { IProduct, ProductDescription, ProductId, ProductName } from 'src/products/applications/domains/product';
@@ -74,7 +74,7 @@ export class ProductController {
   })
   @ApiParam({ name: 'id', type: String, description: 'The id of the product' })
   @Delete(':id')
-  delete(@Param('id') id: ProductId): Promise<void> {
+  delete(@Param('id', ParseUUIDPipe) id: ProductId): Promise<void> {
     return this.deleteProductByIdUseCase.execute(id);
   }
 
@@ -93,7 +93,7 @@ export class ProductController {
   })
   @ApiParam({ name: 'id', type: String, description: 'The id of the product' })
   @Put(':id')
-  update(@Param('id') id: ProductId, @Body() updateProductDto: UpdateProductDto): Promise<IProduct> {
+  update(@Param('id', ParseUUIDPipe) id: ProductId, @Body() updateProductDto: UpdateProductDto): Promise<IProduct> {
     const command = Builder<IProduct>()
       .name(updateProductDto.name as ProductName)
       .price(updateProductDto.price as ProductPrice)
@@ -115,7 +115,7 @@ export class ProductController {
   })
   @ApiParam({ name: 'id', type: String, description: 'The id of the product' })
   @Get(':id')
-  getById(@Param('id') id: ProductId): Promise<IProduct | undefined> {
+  getById(@Param('id', ParseUUIDPipe) id: ProductId): Promise<IProduct | undefined> {
     return this.getProductByIdUseCase.execute(id);
   }
 }

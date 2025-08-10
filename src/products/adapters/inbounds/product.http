@@ -11,20 +11,21 @@ content-type: application/json
 
 @myAccessToken = {{login.response.body.accessToken}}
 
-### Create Currency
-
+### Create products
 POST {{host}}/products
 Content-Type: application/json
 authorization: Bearer {{myAccessToken}}
 
 { 
 
-    "name": "Product 4",
+    "name": "Product  5",
     "price": 100,
     "image": "https://example.com/avatar.jpg",
     "description": "This is a product description"
 }
 
-### Get All Employees
-
+### Get All Products
 GET {{host}}/products
+
+### Get Product By Id
+GET {{host}}/products/18c78713-de5f-4cda-a74d-9fc9aafeeb9e
