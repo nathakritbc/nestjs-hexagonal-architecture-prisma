@@ -1,0 +1,30 @@
+### Login
+# @name login
+POST {{host}}/auth/login/email
+content-type: application/json
+
+{
+  "email": "jame@ex1app.com",
+	"password": "12345678Test"
+}
+###
+
+@myAccessToken = {{login.response.body.accessToken}}
+
+### Create Currency
+
+POST {{host}}/products
+Content-Type: application/json
+authorization: Bearer {{myAccessToken}}
+
+{ 
+
+    "name": "Product 1",
+    "price": 100,
+    "image": "https://example.com/avatar.jpg",
+    "description": "This is a product description"
+}
+
+### Get All Employees
+
+GET {{host}}/products
