@@ -1,3 +1,4 @@
+import { Product } from '@prisma/client';
 import { Brand, CreatedAt, UpdatedAt } from 'src/types/utility.type';
 
 export type ProductId = Brand<string, 'ProductId'>;
@@ -8,22 +9,24 @@ export type ProductImage = Brand<string, 'ProductImage'>;
 export type ProductCreatedAt = Brand<CreatedAt, 'ProductCreatedAt'>;
 export type ProductUpdatedAt = Brand<UpdatedAt, 'ProductUpdatedAt'>;
 
-export interface IProduct {
-  id: ProductId;
-  name: ProductName;
-  price: ProductPrice;
-  description?: ProductDescription;
-  image: ProductImage;
-  createdAt?: ProductCreatedAt;
-  updatedAt?: ProductUpdatedAt;
+export interface IProduct extends Product {
+  uuid: string;
+  name: string;
+  price: number;
+  description: string | null;
+  status: string;
+  image: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }
 
-export class Product implements IProduct {
-  id: ProductId;
-  name: ProductName;
-  price: ProductPrice;
-  description?: ProductDescription;
-  image: ProductImage;
-  createdAt?: ProductCreatedAt;
-  updatedAt?: ProductUpdatedAt;
+export class ProductDomain implements IProduct {
+  uuid: string;
+  name: string;
+  price: number;
+  description: string | null;
+  status: string;
+  image: string;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }

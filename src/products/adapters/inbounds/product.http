@@ -19,7 +19,7 @@ authorization: Bearer {{myAccessToken}}
 
 { 
 
-    "name": "Product 1",
+    "name": "Product 3",
     "price": 100,
     "image": "https://example.com/avatar.jpg",
     "description": "This is a product description"

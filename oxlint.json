@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "rules": {
+    "typescript/ban-ts-comment": "off",
+    "typescript/no-explicit-any": "off",
+    "typescript/no-unsafe-argument": "warn",
+    "typescript/no-unused-vars": "warn"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "NodeJS": "readonly"
+  },
+  "ignorePatterns": [
+    "dist/**/*",
+    "node_modules/**/*",
+    "coverage/**/*",
+    "*.js",
+    "*.mjs"
+  ]
+}

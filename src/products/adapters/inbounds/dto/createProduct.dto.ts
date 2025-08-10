@@ -1,12 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
-import type {
-  ProductDescription,
-  ProductImage,
-  ProductName,
-  ProductPrice,
-} from 'src/products/applications/domains/product';
 import { CreateProductCommand } from 'src/products/applications/ports/product.repository';
 
 export class CreateProductDto implements CreateProductCommand {
@@ -16,7 +10,7 @@ export class CreateProductDto implements CreateProductCommand {
     description: 'The name of the product in multiple languages',
   })
   @IsNotEmpty()
-  name: ProductName;
+  name: string;
 
   @ApiProperty({
     type: Number,
@@ -24,7 +18,7 @@ export class CreateProductDto implements CreateProductCommand {
     description: 'The price of the product',
   })
   @IsNotEmpty()
-  price: ProductPrice;
+  price: number;
 
   @ApiProperty({
     type: String,
@@ -32,7 +26,7 @@ export class CreateProductDto implements CreateProductCommand {
     description: 'The image of the product',
   })
   @IsNotEmpty()
-  image: ProductImage;
+  image: string;
 
   @ApiProperty({
     type: String,
@@ -40,5 +34,5 @@ export class CreateProductDto implements CreateProductCommand {
     description: 'The description of the product',
   })
   @IsOptional()
-  description: ProductDescription;
+  description: string;
 }
