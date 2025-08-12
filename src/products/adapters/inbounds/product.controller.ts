@@ -2,8 +2,13 @@ import { Transactional } from '@nestjs-cls/transactional';
 import { Body, Controller, Delete, Get, HttpStatus, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { Builder } from 'builder-pattern';
-import type { IProduct, ProductDescription, ProductId, ProductName } from 'src/products/applications/domains/product';
-import { ProductImage, ProductPrice } from 'src/products/applications/domains/product';
+import type {
+  IProduct,
+  ProductDescription,
+  ProductId,
+  ProductName,
+} from 'src/products/applications/domains/product.domain';
+import { ProductImage, ProductPrice } from 'src/products/applications/domains/product.domain';
 import { CreateProductUseCase } from 'src/products/applications/usecases/createProduct.usecase';
 import { DeleteProductByIdUseCase } from 'src/products/applications/usecases/deleteProductById.usecase';
 import { GetAllProductsUseCase } from 'src/products/applications/usecases/getAllProducts.usecase';

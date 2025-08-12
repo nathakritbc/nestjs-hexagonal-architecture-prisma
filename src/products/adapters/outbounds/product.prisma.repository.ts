@@ -13,7 +13,7 @@ import {
   ProductName,
   ProductPrice,
   ProductUpdatedAt,
-} from 'src/products/applications/domains/product';
+} from 'src/products/applications/domains/product.domain';
 import { ProductRepository } from 'src/products/applications/ports/product.repository';
 import { Status } from 'src/types/utility.type';
 // import { ProductMongoSchema, productsCollectionName } from './product.schema';
